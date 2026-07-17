@@ -49,7 +49,7 @@ on your machine; nothing phones home.
 ## Get updates
 
 This kit is free. Grab it from Gumroad to get fixes and new versions by email:
-**https://expressive446.gumroad.com/l/handoff-kit**
+**https://expressive446.gumroad.com/l/handoff-kit?utm_source=kit&utm_medium=readme**
 
 ## License
 
