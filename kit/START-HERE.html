@@ -74,7 +74,7 @@ footer a{color:var(--cyan);text-decoration:none}
     <h1>Set up your first handoff</h1>
     <p class="sub">Two ways to use this kit: <b>paste the prompt</b> (zero setup, works anywhere)
     or <b>install the skill</b> (30 seconds, then it's just /handoff forever). Both end the same way:
-    tomorrow's session resumes without you re-explaining anything.</p>
+    tomorrow's session resumes without you re-explaining the project.</p>
   </header>
 
   <section>
@@ -94,10 +94,11 @@ footer a{color:var(--cyan);text-decoration:none}
     <div class="copybox"><pre>ls ~/.claude/skills/ ~/.claude/commands/ 2>/dev/null | grep -i handoff</pre><button data-copy>COPY</button></div>
     <p class="body">Nothing printed? You're clear. Install:</p>
     <div class="copybox"><pre>mkdir -p ~/.claude/skills && cp -r skill/handoff ~/.claude/skills/</pre><button data-copy>COPY</button></div>
-    <p class="body">That's it. No restart needed, no config edits, nothing else touched.</p>
-    <div class="callout warn"><b>Windows note:</b> works out of the box on macOS, Linux, WSL, and Git Bash.
-    On native Windows without Git Bash, the skill still works, it just gathers the git state itself
-    instead of using the bundled script. Details in docs/COMPATIBILITY.md.</div>
+    <p class="body">If that skills folder didn't exist before (this is your first skill), restart Claude Code once so it's picked up. Otherwise no restart needed. No config edits, nothing else touched.</p>
+    <div class="callout warn"><b>Windows note:</b> the commands on this page are for macOS, Linux, WSL, and Git Bash.
+    On native Windows (PowerShell), install with the command below; the skill still works, it just gathers
+    the git state itself instead of using the bundled script. Details in docs/COMPATIBILITY.md.</div>
+    <div class="copybox"><pre>New-Item -ItemType Directory -Force "$env:USERPROFILE\.claude\skills" ; Copy-Item -Recurse skill\handoff "$env:USERPROFILE\.claude\skills\handoff"</pre><button data-copy>COPY</button></div>
   </section>
 
   <section>
@@ -105,7 +106,7 @@ footer a{color:var(--cyan);text-decoration:none}
     <p class="sec-sub">When you're wrapping up, or before a long session gets summarized:</p>
     <div class="copybox"><pre>/handoff</pre><button data-copy>COPY</button></div>
     <p class="body">The skill will sweep for unresolved mistakes (it asks before fixing anything),
-    write a lean ~30-line checkpoint to <span class="mono">~/.claude/handoffs/</span>, and print your
+    write a lean checkpoint (target: ~30 lines) to <span class="mono">~/.claude/handoffs/</span>, and print your
     resume line. If a handoff already exists for the project, it keeps one .bak of the old version.</p>
   </section>
 
@@ -136,6 +137,8 @@ footer a{color:var(--cyan);text-decoration:none}
     <div class="sec-head"><span class="sec-num mono">06</span><h2>Uninstall</h2></div>
     <p class="sec-sub">Clean removal, nothing else is affected:</p>
     <div class="copybox"><pre>rm -rf ~/.claude/skills/handoff</pre><button data-copy>COPY</button></div>
+    <p class="body">PowerShell:</p>
+    <div class="copybox"><pre>Remove-Item -Recurse -Force "$env:USERPROFILE\.claude\skills\handoff"</pre><button data-copy>COPY</button></div>
     <p class="body">Your saved handoffs stay in <span class="mono">~/.claude/handoffs/</span> until you
     delete them yourself.</p>
   </section>

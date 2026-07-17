@@ -8,7 +8,7 @@ Version 1.0.0. Tested against Claude Code 2.1.163 on Linux.
 |---|---|
 | Claude Code on macOS / Linux | Supported |
 | Claude Code on Windows via WSL or Git Bash | Supported |
-| Claude Code on native Windows (PowerShell only) | Works with graceful fallback — the skill tells the agent to gather the header fields with git directly when `bash` is missing |
+| Claude Code on native Windows (PowerShell only) | Works with graceful fallback — the skill tells the agent to gather the header fields with git directly when `bash` is missing. Use the PowerShell install/uninstall commands in START-HERE; the Unix ones won't run in PowerShell |
 | Cursor, Codex, other harnesses | Portable prompt only (`PROMPT.md`), as long as the agent can read and write files in your home directory |
 | Non-git projects | Supported — header records `repo_root: non-git`; the git-verification half of the resume ritual is skipped |
 | Brand-new repos (git init, no commits yet) | Supported — branch records as unborn/none |
@@ -40,5 +40,6 @@ touched.
 
 ## Privacy
 
-Everything runs locally. No telemetry, no network calls, nothing phones home. The
-helper script is read-only (`git status`, `git rev-parse` — it changes nothing).
+The kit adds no telemetry and makes no network calls of its own (your AI tool still
+talks to its own API, of course). The helper script is read-only (`git status`,
+`git rev-parse` — it changes nothing).

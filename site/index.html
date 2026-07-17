@@ -123,8 +123,8 @@ footer a{color:var(--cyan);text-decoration:none}
     <div class="kicker">Claude Code · Free Kit</div>
     <span class="free-pill">100% FREE</span>
     <h1>Claude Code Handoff Kit</h1>
-    <p class="sub">Your AI forgets everything when you close the window. This kit writes the
-    <b>~30-line file that fixes it</b>, so tomorrow's session picks up right where today's stopped,
+    <p class="sub">Every fresh Claude Code session starts from zero on your project. This kit writes the
+    <b>small file that fixes it</b>, so tomorrow's session picks up right where today's stopped,
     without you re-explaining the whole project.</p>
     <div class="cta-row">
       <a class="btn primary" href="https://expressive446.gumroad.com/l/handoff-kit?utm_source=showcase&utm_medium=hero">Get it free on Gumroad</a>
@@ -142,8 +142,8 @@ footer a{color:var(--cyan);text-decoration:none}
         <div class="tagrow"><span class="tag o">every session</span></div>
       </div>
       <div class="card" style="--accent:var(--magenta);--glow:rgba(255,57,230,.15)">
-        <h3>Summaries drop the dead ends</h3>
-        <p>Compaction and auto-summaries keep your decisions but quietly lose the approaches that didn't work. So the next session happily re-runs them.</p>
+        <h3>Summaries can drop the dead ends</h3>
+        <p>Compaction and auto-summaries keep your decisions but can quietly lose the approaches that didn't work. Then the next session happily re-runs them.</p>
         <div class="tagrow"><span class="tag m">the hidden cost</span></div>
       </div>
       <div class="card" style="--accent:var(--yellow);--glow:rgba(255,210,61,.15)">
@@ -159,7 +159,7 @@ footer a{color:var(--cyan);text-decoration:none}
     <p class="sec-sub">One command at the end. One line at the start. That's the whole loop.</p>
     <ol class="steps">
       <li><b>End your session with /handoff.</b> The skill sweeps for unresolved mistakes (it reports them, it never silently "fixes" your code), then writes a lean checkpoint: goal, exact stop point, verification evidence, next action, and every dead end you paid for.</li>
-      <li><b>It saves ~30 lines outside your repo</b> with a state header: branch, commit, and dirty-file counts pulled straight from git. Then it prints your resume line.</li>
+      <li><b>It saves a lean checkpoint (target: ~30 lines) outside your repo</b> with a state header: branch, commit, and dirty-file counts pulled straight from git. Then it prints your resume line.</li>
       <li><b>Next session, paste one line.</b> The fresh session reads the file, checks your repo's live state against the header before touching anything, restates the plan in 3 lines, and starts working.</li>
     </ol>
     <div class="copybox"><pre>Read ~/.claude/handoffs/my-project.md and continue</pre><button data-copy>COPY</button></div>
@@ -215,7 +215,7 @@ Nothing pending. Waiting on you for what's next.</pre>
       </div>
       <div class="card" style="--accent:var(--magenta);--glow:rgba(255,57,230,.15)">
         <h3>The portable prompt</h3>
-        <p>Zero install. Paste it at the end of any session. Works in Claude Code out of the box, and in Cursor, Codex, and friends.</p>
+        <p>Zero install. Paste it at the end of any session. Works in Claude Code out of the box, and in Cursor, Codex, and friends (any agent that can write files in your home folder).</p>
         <div class="tagrow"><span class="tag m">any harness</span><span class="tag g">no setup</span></div>
       </div>
       <div class="card" style="--accent:var(--green);--glow:rgba(0,255,163,.15)">
@@ -243,7 +243,7 @@ Nothing pending. Waiting on you for what's next.</pre>
 
   <section id="real">
     <div class="sec-head"><span class="sec-num mono">05</span><h2>A real generated handoff</h2></div>
-    <p class="sec-sub">This came out of the skill during testing (username redacted, nothing else touched). Note the mistake sweep: the session found changes it didn't make, and flagged them instead of touching them.</p>
+    <p class="sec-sub">Excerpted from a real handoff the skill generated during testing (shortened to fit here, username redacted). Note the mistake sweep: the session found changes it didn't make, and flagged them instead of touching them.</p>
     <div class="term">
       <div class="bar">
         <span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#ffbd2e"></span><span class="dot" style="background:#28c840"></span>
@@ -268,7 +268,7 @@ in 3 lines and start Next 1 in the same turn unless blocked.
 
 <span class="cy">Resume: Read ~/.claude/handoffs/demo-repo.md and continue</span></pre>
     </div>
-    <p class="callout warn"><b>Privacy rule, stamped on every section:</b> no secrets, tokens, credentials, auth URLs, customer data, or copied file contents ever go in a handoff. Safe paths and redacted excerpts only. The file lives outside your repo, so it never lands in a commit.</p>
+    <p class="callout warn"><b>Privacy rule, stamped on every section:</b> the skill's rules bar secrets, tokens, credentials, auth URLs, customer data, and copied file contents from every handoff. Safe paths and redacted excerpts only. (It's an instruction the model follows, not encryption, so glance at the file before sharing it.) The file lives outside your repo, so it never lands in a commit.</p>
   </section>
 
   <section>

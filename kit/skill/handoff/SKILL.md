@@ -26,12 +26,13 @@ repo, git history, or the project's own docs. Point to files; never paste their 
    Windows without Git Bash), gather the same fields yourself with git: timestamp+tz,
    cwd, `git rev-parse --show-toplevel`, branch (or DETACHED), short HEAD, and
    staged/unstaged/untracked counts from `git status --porcelain`.
-4. **Write the file** to `~/.claude/handoffs/<project-slug>.md` (kebab-case the project
-   folder name; create the directory if absent). Collision check first: if a handoff
-   with this slug already exists but its `cwd:` line is a DIFFERENT project path, do
-   not touch it — use `<project-slug>-<first 6 chars of the sha256 of this project's
-   absolute path>.md` instead. If it is the same project, rename the old file to
-   `<project-slug>.bak.md` (keep one prior version), then write fresh — never append.
+4. **Write the file** to `~/.claude/handoffs/` (create the directory if absent).
+   Pick the filename first: default is `<project-slug>.md` (kebab-case the project
+   folder name), but if that file exists and its `cwd:` line is a DIFFERENT project
+   path, leave it alone and use `<project-slug>-<first 6 chars of the sha256 of this
+   project's absolute path>.md` for this project instead. Then, if the chosen file
+   already exists (same project), rename it to `<same name>.bak.md` (keep one prior
+   version) and write fresh — never append.
 5. **Confirm the saved path and print the resume command** on its own line so it is
    easy to copy:
    `Read ~/.claude/handoffs/<project-slug>.md and continue`

@@ -3,8 +3,8 @@
 Close a session today, resume it tomorrow without re-explaining your project.
 
 Every fresh Claude Code session starts at zero. Summaries and `/compact` keep your
-decisions but quietly drop the most expensive thing you learned: the approaches that
-DIDN'T work. This kit writes a lean, verified checkpoint at the end of a session and
+decisions but can quietly drop the most expensive thing you learned: the approaches
+that DIDN'T work. This kit writes a lean, verified checkpoint at the end of a session and
 teaches the next session to distrust it until it checks your repo's live state.
 
 ## What's inside
@@ -30,8 +30,8 @@ session with `/handoff`. Next session, paste the printed resume line:
 Read ~/.claude/handoffs/<project>.md and continue
 ```
 
-The fresh session verifies your repo state (branch, HEAD, dirty counts) against the
-file before touching anything, so a stale handoff gets caught, not trusted.
+The fresh session compares your repo state (branch, HEAD, dirty counts) against the
+file and reports any drift it finds BEFORE it edits a thing.
 
 ## Why lean
 
@@ -42,9 +42,9 @@ paste. Around 30 lines resumes faster than 300.
 
 ## Privacy
 
-Handoffs never include secrets, tokens, credentials, private URLs, customer data, or
-copied file contents. Safe paths and redacted excerpts only. The kit runs entirely
-on your machine; nothing phones home.
+The skill's rules bar secrets, tokens, credentials, private URLs, customer data, and
+copied file contents from every handoff. Safe paths and redacted excerpts only. The
+kit adds no telemetry and makes no network calls of its own.
 
 ## Get updates
 
