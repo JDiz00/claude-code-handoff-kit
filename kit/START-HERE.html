@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>START HERE — Claude Code Handoff Kit</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%81%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#07070c; --panel:#11111c; --border:#222232; --text:#cdcdd9; --muted:#7e7e92;
+  --cyan:#00f0ff; --magenta:#ff39e6; --coral:#ff7a45; --green:#00ffa3;
+  --blue:#4d9fff; --yellow:#ffd23d; --good:#46e88a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background-color:var(--bg);
+  background-image:
+    radial-gradient(900px 540px at 8% -5%, rgba(255,122,69,.09), transparent 60%),
+    radial-gradient(900px 560px at 95% -8%, rgba(0,240,255,.10), transparent 60%);
+  background-repeat:no-repeat;
+  color:var(--text);
+  font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:16px;line-height:1.6;
+}
+.wrap{max-width:860px;margin:0 auto;padding:44px 22px 80px}
+.mono{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace}
+.kicker{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px}
+h1{
+  font-size:clamp(30px,5.4vw,48px);line-height:1.08;font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(92deg,var(--cyan) 5%,var(--magenta) 52%,var(--coral) 95%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:14px;
+}
+.sub{font-size:17px;max-width:640px}
+.sub b{color:#fff}
+section{margin-top:56px}
+.sec-head{display:flex;align-items:baseline;gap:13px;margin-bottom:6px}
+.sec-num{font-family:"JetBrains Mono",monospace;color:var(--cyan);font-size:15px}
+h2{font-size:clamp(21px,3vw,26px);color:#fff}
+.sec-sub{color:var(--muted);margin-bottom:20px;max-width:620px}
+p.body{margin-bottom:12px;max-width:680px}
+p.body b{color:#fff}
+.copybox{position:relative;background:#0b0b14;border:1px solid var(--border);border-radius:12px;margin:14px 0}
+.copybox pre{padding:16px 90px 16px 18px;font-family:"JetBrains Mono",monospace;font-size:13.5px;color:var(--green);white-space:pre-wrap;word-break:break-word}
+.copybox button{
+  position:absolute;top:10px;right:10px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;
+  background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:8px;padding:5px 12px;cursor:pointer;
+}
+.copybox button:hover{color:var(--cyan);border-color:var(--cyan)}
+.callout{border:1px dashed rgba(0,240,255,.5);border-radius:12px;padding:15px 19px;margin:18px 0;font-size:14.5px;background:rgba(0,240,255,.03);max-width:680px}
+.callout.warn{border-color:rgba(255,210,61,.55);background:rgba(255,210,61,.04)}
+.callout b{color:#fff}
+ul.tight{list-style:none;max-width:660px}
+ul.tight li{padding:5px 0 5px 22px;position:relative;font-size:14.5px}
+ul.tight li::before{content:"▸";position:absolute;left:2px;color:var(--cyan)}
+.principle{
+  margin-top:70px;border-radius:16px;padding:28px 26px;text-align:center;
+  background:linear-gradient(100deg,rgba(0,240,255,.10),rgba(255,57,230,.10) 50%,rgba(255,122,69,.10));
+  border:1px solid var(--border);
+}
+.principle p{font-size:clamp(17px,2.6vw,21px);color:#fff;font-weight:700;max-width:680px;margin:0 auto}
+footer{margin-top:48px;text-align:center;color:var(--muted);font-size:13px}
+footer a{color:var(--cyan);text-decoration:none}
+@media(max-width:680px){
+  .wrap{padding:32px 14px 60px}
+  .copybox pre{padding-right:18px;padding-top:40px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="kicker">Start Here · 5 Minutes</div>
+    <h1>Set up your first handoff</h1>
+    <p class="sub">Two ways to use this kit: <b>paste the prompt</b> (zero setup, works anywhere)
+    or <b>install the skill</b> (30 seconds, then it's just /handoff forever). Both end the same way:
+    tomorrow's session resumes without you re-explaining anything.</p>
+  </header>
+
+  <section>
+    <div class="sec-head"><span class="sec-num mono">01</span><h2>Fastest path: the paste prompt</h2></div>
+    <p class="sec-sub">No install. Try the whole loop once before committing to anything.</p>
+    <p class="body">Open <b>PROMPT.md</b> from this kit, copy the block inside it, and paste it at the
+    end of any Claude Code session. It writes your handoff and prints a one-line resume command.
+    Next session, paste that line. Done.</p>
+    <p class="body">If that loop saves you time, install the skill so it's one command instead of a paste.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num mono">02</span><h2>Install the skill (30 seconds)</h2></div>
+    <p class="sec-sub">One folder copy. Run this from the unzipped kit folder.</p>
+    <p class="body"><b>First, check for collisions.</b> If you already have a /handoff command or skill,
+    this install would shadow it:</p>
+    <div class="copybox"><pre>ls ~/.claude/skills/ ~/.claude/commands/ 2>/dev/null | grep -i handoff</pre><button data-copy>COPY</button></div>
+    <p class="body">Nothing printed? You're clear. Install:</p>
+    <div class="copybox"><pre>mkdir -p ~/.claude/skills && cp -r skill/handoff ~/.claude/skills/</pre><button data-copy>COPY</button></div>
+    <p class="body">That's it. No restart needed, no config edits, nothing else touched.</p>
+    <div class="callout warn"><b>Windows note:</b> works out of the box on macOS, Linux, WSL, and Git Bash.
+    On native Windows without Git Bash, the skill still works, it just gathers the git state itself
+    instead of using the bundled script. Details in docs/COMPATIBILITY.md.</div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num mono">03</span><h2>End a session</h2></div>
+    <p class="sec-sub">When you're wrapping up, or before a long session gets summarized:</p>
+    <div class="copybox"><pre>/handoff</pre><button data-copy>COPY</button></div>
+    <p class="body">The skill will sweep for unresolved mistakes (it asks before fixing anything),
+    write a lean ~30-line checkpoint to <span class="mono">~/.claude/handoffs/</span>, and print your
+    resume line. If a handoff already exists for the project, it keeps one .bak of the old version.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num mono">04</span><h2>Resume next session</h2></div>
+    <p class="sec-sub">Open a fresh session in the same project and paste the printed line, e.g.:</p>
+    <div class="copybox"><pre>Read ~/.claude/handoffs/my-project.md and continue</pre><button data-copy>COPY</button></div>
+    <p class="body">The fresh session checks your repo's live branch, commit, and dirty counts against
+    the handoff's header <b>before touching any files</b>. If someone (including you, in another window)
+    changed the repo since the handoff was written, it reports the mismatch and stops instead of
+    working from stale info. Then it restates Goal / State / Next in 3 lines and starts the next step.</p>
+    <div class="callout">Running two windows on the <b>same</b> repo at the same time? That's a job for
+    git worktrees, not handoffs. The tripwire catches collisions, it can't prevent them.</div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num mono">05</span><h2>Good habits (the short version)</h2></div>
+    <ul class="tight">
+      <li>Hand off at the end of any session you'll continue later, even "in an hour".</li>
+      <li>Never let the ~30-line target trim the Tried/constraints section. Dead ends are the part of your session the repo can't give back.</li>
+      <li>Pointers, not pastes. The handoff records paths and line refs, never file contents.</li>
+      <li>No secrets, tokens, credentials, or customer data in a handoff. Ever.</li>
+      <li>Full rules in docs/POLICY.md, one page.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num mono">06</span><h2>Uninstall</h2></div>
+    <p class="sec-sub">Clean removal, nothing else is affected:</p>
+    <div class="copybox"><pre>rm -rf ~/.claude/skills/handoff</pre><button data-copy>COPY</button></div>
+    <p class="body">Your saved handoffs stay in <span class="mono">~/.claude/handoffs/</span> until you
+    delete them yourself.</p>
+  </section>
+
+  <div class="principle">
+    <p>End with /handoff. Resume with one line. Stop re-explaining your project.</p>
+  </div>
+
+  <footer>
+    Claude Code Handoff Kit · MIT licensed · updates via
+    <a href="https://expressive446.gumroad.com/l/handoff-kit">Gumroad</a>
+  </footer>
+</div>
+
+<script>
+document.querySelectorAll("[data-copy]").forEach(function(btn){
+  btn.addEventListener("click",function(){
+    var text=btn.parentElement.querySelector("pre").innerText;
+    navigator.clipboard.writeText(text).then(function(){
+      btn.textContent="COPIED";
+      setTimeout(function(){btn.textContent="COPY"},1400);
+    });
+  });
+});
+</script>
+</body>
+</html>
