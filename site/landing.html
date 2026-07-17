@@ -1,0 +1,295 @@
+<style>
+:root{
+  --bg:#07070c; --panel:#11111c; --border:#222232; --text:#cdcdd9; --muted:#7e7e92;
+  --cyan:#00f0ff; --magenta:#ff39e6; --coral:#ff7a45; --green:#00ffa3;
+  --blue:#4d9fff; --yellow:#ffd23d; --good:#46e88a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.hkland{
+  background-color:var(--bg);
+  background-image:
+    radial-gradient(1000px 600px at 8% -5%, rgba(77,159,255,.10), transparent 60%),
+    radial-gradient(1000px 620px at 95% -8%, rgba(0,240,255,.12), transparent 60%);
+  background-repeat:no-repeat;
+  color:var(--text);
+  font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:16px; line-height:1.6;
+}
+.wrap{max-width:1060px;margin:0 auto;padding:48px 22px 80px}
+.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+.kicker{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px}
+h1{
+  font-size:clamp(34px,6vw,62px);line-height:1.06;font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(92deg,#00f0ff,#4d9fff);
+  -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:18px;
+}
+.sub{font-size:clamp(17px,2.4vw,21px);color:var(--text);max-width:680px}
+.sub b{color:#fff}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.btn{
+  display:inline-block;padding:13px 26px;border-radius:10px;font-weight:700;font-size:16px;
+  text-decoration:none;transition:transform .15s ease, box-shadow .15s ease;
+}
+.btn.primary{background:linear-gradient(92deg,var(--cyan),var(--blue));color:#04121a;box-shadow:0 0 24px rgba(0,240,255,.35)}
+.btn.ghost{border:1px solid var(--border);color:var(--text);background:var(--panel)}
+.btn:hover{transform:translateY(-2px)}
+.free-pill{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.12em;color:var(--good);border:1px solid rgba(70,232,138,.45);border-radius:999px;padding:4px 12px;margin-bottom:18px;background:rgba(70,232,138,.07)}
+section{margin-top:74px}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sec-num{font-family:"JetBrains Mono",monospace;color:var(--cyan);font-size:15px}
+h2{font-size:clamp(23px,3.4vw,30px);color:#fff;letter-spacing:-.01em}
+.sec-sub{color:var(--muted);margin-bottom:26px;max-width:640px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid.two{grid-template-columns:repeat(2,1fr)}
+.card{
+  background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:20px 20px 18px;
+  border-top:2px solid var(--accent,var(--cyan));transition:transform .15s ease, box-shadow .15s ease;
+  box-shadow:0 0 0 1px var(--ring,rgba(0,240,255,.14)),0 12px 30px -24px var(--glow,rgba(0,240,255,.35));
+}
+.card:hover{transform:translateY(-3px);box-shadow:0 0 0 1px var(--ring,rgba(0,240,255,.2)),0 18px 40px -24px var(--glow,rgba(0,240,255,.5))}
+.card h3{color:#fff;font-size:17px;margin-bottom:8px;display:flex;align-items:center;gap:9px}
+.card h3::before{content:"";flex:none;width:11px;height:11px;border-radius:50%;background:var(--accent,var(--cyan));box-shadow:0 0 12px var(--accent,var(--cyan))}
+.card p{font-size:14.5px;color:var(--text)}
+.card .tagrow{margin-top:12px}
+.tag{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em;border-radius:999px;padding:2px 10px;margin:2px 4px 0 0;border:1px solid var(--border);color:var(--muted)}
+.tag.c{color:var(--cyan);border-color:rgba(0,240,255,.35);background:rgba(0,240,255,.12)}
+.tag.m{color:var(--magenta);border-color:rgba(255,57,230,.35);background:rgba(255,57,230,.12)}
+.tag.g{color:var(--green);border-color:rgba(0,255,163,.35);background:rgba(0,255,163,.12)}
+.tag.o{color:var(--coral);border-color:rgba(255,122,69,.35);background:rgba(255,122,69,.12)}
+.tag.y{color:var(--yellow);border-color:rgba(255,210,61,.35);background:rgba(255,210,61,.12)}
+ol.steps{list-style:none;counter-reset:st;max-width:760px}
+ol.steps li{counter-increment:st;position:relative;padding:16px 18px 16px 64px;background:var(--panel);border:1px solid var(--border);border-radius:12px;margin-bottom:12px}
+ol.steps li::before{
+  content:"0" counter(st);position:absolute;left:18px;top:16px;
+  font-family:"JetBrains Mono",monospace;font-size:20px;color:var(--cyan);
+}
+ol.steps b{color:#fff}
+.copybox{position:relative;background:#0b0b14;border:1px solid var(--border);border-radius:12px;margin:14px 0}
+.copybox pre{padding:16px 90px 16px 18px;font-family:"JetBrains Mono",monospace;font-size:14px;color:var(--green);white-space:pre-wrap;word-break:break-word}
+.copybox button{
+  position:absolute;top:10px;right:10px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;
+  background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:8px;padding:5px 12px;cursor:pointer;
+}
+.copybox button:hover{color:var(--cyan);border-color:var(--cyan)}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.col{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px}
+.col.bad{border-top:2px solid var(--coral);box-shadow:0 0 0 1px rgba(255,122,69,.18),0 18px 40px -28px rgba(255,122,69,.5)}
+.col.good{border-top:2px solid var(--green);box-shadow:0 0 0 1px rgba(0,255,163,.18),0 18px 40px -28px rgba(0,255,163,.5)}
+.col h3{font-size:16px;margin-bottom:12px}
+.col.bad h3{color:var(--coral)}
+.col.good h3{color:var(--green)}
+ul.tight{list-style:none}
+ul.tight li{padding:5px 0 5px 22px;position:relative;font-size:14.5px}
+ul.tight li::before{content:"▸";position:absolute;left:2px;color:var(--accent2,var(--cyan))}
+.col.bad ul.tight li::before{color:var(--coral)}
+.col.good ul.tight li::before{color:var(--green)}
+.term{
+  background:#0b0b14;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-top:18px;
+}
+.term .bar{display:flex;gap:7px;align-items:center;padding:11px 16px;border-bottom:1px solid var(--border);background:#0e0e18}
+.term .dot{width:11px;height:11px;border-radius:50%}
+.term .bar span.lbl{margin-left:8px;font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--muted);letter-spacing:.06em}
+.term pre{padding:18px;font-family:"JetBrains Mono",monospace;font-size:13px;line-height:1.65;color:var(--text);overflow-x:auto}
+.term .cy{color:var(--cyan)} .term .gr{color:var(--good)} .term .yl{color:var(--yellow)} .term .mg{color:var(--magenta)} .term .mu{color:var(--muted)} .term .co{color:var(--coral)}
+.callout{border:1px dashed rgba(0,240,255,.5);border-radius:12px;padding:16px 20px;margin-top:20px;font-size:14.5px;background:rgba(0,240,255,.03)}
+.callout.warn{border-color:rgba(255,210,61,.55);background:rgba(255,210,61,.04)}
+.callout b{color:#fff}
+.principle{
+  margin-top:84px;border-radius:16px;padding:34px 30px;text-align:center;position:relative;
+  background:linear-gradient(100deg,rgba(0,240,255,.10),rgba(77,159,255,.10));
+  border:1px solid rgba(0,240,255,.28);
+}
+.principle::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;
+  background:linear-gradient(92deg,#00f0ff,#4d9fff);opacity:.5;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite:exclude;
+}
+.principle p{font-size:clamp(18px,2.8vw,24px);color:#fff;font-weight:700;max-width:760px;margin:0 auto}
+.principle .mono{display:block;margin-top:12px;font-size:13px;color:var(--cyan);font-weight:400}
+footer{margin-top:56px;text-align:center;color:var(--muted);font-size:13px}
+footer a{color:var(--cyan);text-decoration:none}
+@media(max-width:680px){
+  .wrap{padding:34px 14px 60px}
+  .grid,.grid.two,.compare{grid-template-columns:1fr}
+  .copybox pre{padding-right:18px;padding-top:40px}
+}
+</style>
+<div class="hkland">
+<div class="wrap">
+
+  <header>
+    <div class="kicker">Claude Code · Free Kit</div>
+    <span class="free-pill">100% FREE</span>
+    <h1>Claude Code Handoff Kit</h1>
+    <p class="sub">Every fresh Claude Code session starts from zero on your project. This kit writes the
+    <b>small file that fixes it</b>, so tomorrow's session picks up right where today's stopped,
+    without you re-explaining the whole project.</p>
+    <div class="cta-row">
+      <a class="btn primary" data-gumroad-action="buy" role="button" data-gumroad-checkout-params="{}" href="/l/handoff-kit?wanted=true">Get it free →</a>
+      <a class="btn ghost" href="#real">See a real handoff</a>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head"><span class="sec-num mono">01</span><h2>The problem nobody warns you about</h2></div>
+    <p class="sec-sub">Close a Claude Code session and three things happen to your work.</p>
+    <div class="grid">
+      <div class="card" style="--accent:var(--coral);--ring:rgba(255,122,69,.16);--glow:rgba(255,122,69,.4)">
+        <h3>Fresh sessions start at zero</h3>
+        <p>New window, blank memory. The project you spent all day explaining? Gone. You get to explain it again.</p>
+        <div class="tagrow"><span class="tag o">every session</span></div>
+      </div>
+      <div class="card" style="--accent:var(--magenta);--ring:rgba(255,57,230,.16);--glow:rgba(255,57,230,.4)">
+        <h3>Summaries can drop the dead ends</h3>
+        <p>Compaction and auto-summaries keep your decisions but can quietly lose the approaches that didn't work. Then the next session happily re-runs them.</p>
+        <div class="tagrow"><span class="tag m">the hidden cost</span></div>
+      </div>
+      <div class="card" style="--accent:var(--yellow);--ring:rgba(255,210,61,.16);--glow:rgba(255,210,61,.4)">
+        <h3>Re-explaining burns real time</h3>
+        <p>20 minutes of "so here's the project, here's where we were" at the start of every session adds up fast. And it buries the new session in pasted history.</p>
+        <div class="tagrow"><span class="tag y">your time</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num mono">02</span><h2>How it works</h2></div>
+    <p class="sec-sub">One command at the end. One line at the start. That's the whole loop.</p>
+    <ol class="steps">
+      <li><b>End your session with /handoff.</b> The skill sweeps for unresolved mistakes (it reports them, it never silently "fixes" your code), then writes a lean checkpoint: goal, exact stop point, verification evidence, next action, and every dead end you paid for.</li>
+      <li><b>It saves a lean checkpoint (target: ~30 lines) outside your repo</b> with a state header: branch, commit, and dirty-file counts pulled straight from git. Then it prints your resume line.</li>
+      <li><b>Next session, paste one line.</b> The fresh session reads the file, checks your repo's live state against the header before touching anything, restates the plan in 3 lines, and starts working.</li>
+    </ol>
+    <div class="copybox"><pre>Read ~/.claude/handoffs/my-project.md and continue</pre></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num mono">03</span><h2>The part that makes it different</h2></div>
+    <p class="sec-sub">Everyone has a notes template. Almost nobody ships the verification step.</p>
+    <div class="compare">
+      <div class="col bad">
+        <h3>Blind resume</h3>
+        <ul class="tight">
+          <li>"Read my notes and continue"</li>
+          <li>Trusts a file that might be days old</li>
+          <li>Doesn't know a teammate (or you, in another window) already changed the code</li>
+          <li>Starts editing based on stale state</li>
+        </ul>
+      </div>
+      <div class="col good">
+        <h3>Verified resume</h3>
+        <ul class="tight">
+          <li>Compares the handoff's branch, commit, and dirty counts against live git</li>
+          <li>Reports any mismatch BEFORE changing files</li>
+          <li>Restates Goal / State / Next in 3 lines so you can sanity-check it</li>
+          <li>Then, and only then, starts the next step</li>
+        </ul>
+      </div>
+    </div>
+    <div class="term">
+      <div class="bar">
+        <span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#ffbd2e"></span><span class="dot" style="background:#28c840"></span>
+        <span class="lbl">fresh session · repo changed since the handoff was written</span>
+      </div>
+      <pre><span class="mu">$</span> <span class="cy">Read ~/.claude/handoffs/demo-repo.md and continue</span>
+
+<span class="co">Mismatch found:</span> the tree is now clean at HEAD <span class="yl">84a0ec7</span> (commit "notes +
+gitignore"). The README scratch line and notes.json from the handoff are
+gone, resolved by a commit made outside this session.
+
+Nothing pending. Waiting on you for what's next.</pre>
+    </div>
+    <p class="callout">That catch above is real output from our test run. The handoff said commit <b>e911e9d</b>, the repo had moved to <b>84a0ec7</b>, and the fresh session stopped and said so instead of editing files based on stale info. We call the header a <b>drift tripwire</b>: a mismatch reliably means stop and look. That's honest, and it's a big upgrade over an undated notes file.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num mono">04</span><h2>What's in the kit</h2></div>
+    <p class="sec-sub">Self-contained. No dependencies, no build step, nothing phones home.</p>
+    <div class="grid">
+      <div class="card" style="--accent:var(--cyan);--ring:rgba(0,240,255,.16);--glow:rgba(0,240,255,.4)">
+        <h3>The /handoff skill</h3>
+        <p>Drop one folder into Claude Code and end any session with /handoff. Includes the git state-header script.</p>
+        <div class="tagrow"><span class="tag c">claude code</span><span class="tag g">30-sec install</span></div>
+      </div>
+      <div class="card" style="--accent:var(--magenta);--ring:rgba(255,57,230,.16);--glow:rgba(255,57,230,.4)">
+        <h3>The portable prompt</h3>
+        <p>Zero install. Paste it at the end of any session. Works in Claude Code out of the box, and in Cursor, Codex, and friends (any agent that can write files in your home folder).</p>
+        <div class="tagrow"><span class="tag m">any harness</span><span class="tag g">no setup</span></div>
+      </div>
+      <div class="card" style="--accent:var(--green);--ring:rgba(0,255,163,.16);--glow:rgba(0,255,163,.4)">
+        <h3>START-HERE guide</h3>
+        <p>Open it in your browser: install, first handoff, resume, uninstall. Copy buttons on everything you'd type.</p>
+        <div class="tagrow"><span class="tag g">humans</span></div>
+      </div>
+      <div class="card" style="--accent:var(--blue);--ring:rgba(77,159,255,.16);--glow:rgba(77,159,255,.4)">
+        <h3>A real example handoff</h3>
+        <p>Generated by the skill on a demo repo, not written by hand. See exactly what you'll get before you install anything.</p>
+        <div class="tagrow"><span class="tag c">real output</span></div>
+      </div>
+      <div class="card" style="--accent:var(--coral);--ring:rgba(255,122,69,.16);--glow:rgba(255,122,69,.4)">
+        <h3>The policy one-pager</h3>
+        <p>The rules that make it work: when to hand off, why you never trim the failed approaches, and why the resume verifies first.</p>
+        <div class="tagrow"><span class="tag o">the procedure</span></div>
+      </div>
+      <div class="card" style="--accent:var(--yellow);--ring:rgba(255,210,61,.16);--glow:rgba(255,210,61,.4)">
+        <h3>Compatibility &amp; honest limits</h3>
+        <p>What's supported, what's not, and what a handoff can't save (unsaved buffers, killed processes). No overselling.</p>
+        <div class="tagrow"><span class="tag y">tested</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="real">
+    <div class="sec-head"><span class="sec-num mono">05</span><h2>A real generated handoff</h2></div>
+    <p class="sec-sub">Excerpted from a real handoff the skill generated during testing (shortened to fit here, username redacted). Note the mistake sweep: the session found changes it didn't make, and flagged them instead of touching them.</p>
+    <div class="term">
+      <div class="bar">
+        <span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#ffbd2e"></span><span class="dot" style="background:#28c840"></span>
+        <span class="lbl">~/.claude/handoffs/demo-repo.md</span>
+      </div>
+      <pre><span class="cy"># Handoff — demo-repo — status: ready</span>
+<span class="mu">timestamp: 2026-07-17 06:53 CDT
+cwd: /home/alex/projects/handoff-kit/demo-repo
+branch: master · head: e911e9d · dirty: staged=0 unstaged=1 untracked=2</span>
+
+<span class="yl">RESUME RITUAL:</span> compare repo_root+branch+head+dirty against live git status;
+report any mismatch BEFORE changing files. Then state Goal/State/Next
+in 3 lines and start Next 1 in the same turn unless blocked.
+
+<span class="gr">## Goal</span> — demo-app: tiny todo CLI. No active task this session.
+<span class="gr">## State</span> — tree picked up two changes this session didn't make:
+  README.md gained "# scratch note", untracked notes.json appeared.
+<span class="gr">## Evidence</span> — git status --porcelain → M README.md, ?? notes.json
+<span class="gr">## Next</span> — 1. Ask whether those changes are wanted, before touching them.
+<span class="gr">## Tried / constraints</span> — none this session.
+<span class="mu">(...decisions, key files, open items...)</span>
+
+<span class="cy">Resume: Read ~/.claude/handoffs/demo-repo.md and continue</span></pre>
+    </div>
+    <p class="callout warn"><b>Privacy rule, stamped on every section:</b> the skill's rules bar secrets, tokens, credentials, auth URLs, customer data, and copied file contents from every handoff. Safe paths and redacted excerpts only. (It's an instruction the model follows, not encryption, so glance at the file before sharing it.) The file lives outside your repo, so it never lands in a commit.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num mono">06</span><h2>Get it</h2></div>
+    <p class="sec-sub">Free. The download includes everything above, and grabbing it through Gumroad means you get fixes and new versions by email.</p>
+    <div class="cta-row" style="margin-top:6px">
+      <a class="btn primary" data-gumroad-action="buy" role="button" data-gumroad-checkout-params="{}" href="/l/handoff-kit?wanted=true">Download the free kit →</a>
+    </div>
+    <p class="callout" style="margin-top:26px">Honest version: if all you want is the paste prompt, it's in the kit and it works with zero setup. Install the skill when you're tired of pasting. Either way you stop re-explaining your project every morning.</p>
+  </section>
+
+  <div class="principle">
+    <p>A handoff isn't a transcript. It's the 30 lines your repo can't tell a fresh session, verified before they're trusted.</p>
+    <span class="mono">/handoff → close the window → "read the file and continue"</span>
+  </div>
+
+  <footer>
+    Claude Code Handoff Kit · MIT licensed · <a href="https://github.com/JDiz00/claude-code-handoff-kit">Source on GitHub</a><br><span style="font-size:12px;opacity:.8">Claude is a trademark of Anthropic PBC. This product is not affiliated with, endorsed by, or sponsored by Anthropic.</span>
+  </footer>
+</div>
+
+</div>
