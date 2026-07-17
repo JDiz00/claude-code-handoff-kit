@@ -13,11 +13,12 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 body{
   background-color:var(--bg);
   background-image:
-    radial-gradient(1000px 600px at 8% -5%, rgba(255,122,69,.09), transparent 60%),
-    radial-gradient(1000px 620px at 95% -8%, rgba(0,240,255,.10), transparent 60%);
+    radial-gradient(1000px 600px at 8% -5%, rgba(77,159,255,.10), transparent 60%),
+    radial-gradient(1000px 620px at 95% -8%, rgba(0,240,255,.12), transparent 60%);
   background-repeat:no-repeat;
   color:var(--text);
   font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;
@@ -28,7 +29,7 @@ body{
 .kicker{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px}
 h1{
   font-size:clamp(34px,6vw,62px);line-height:1.06;font-weight:800;letter-spacing:-.02em;
-  background:linear-gradient(92deg,var(--cyan) 5%,var(--magenta) 52%,var(--coral) 95%);
+  background:linear-gradient(92deg,#00f0ff,#4d9fff);
   -webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:18px;
 }
 .sub{font-size:clamp(17px,2.4vw,21px);color:var(--text);max-width:680px}
@@ -52,17 +53,19 @@ h2{font-size:clamp(23px,3.4vw,30px);color:#fff;letter-spacing:-.01em}
 .card{
   background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:20px 20px 18px;
   border-top:2px solid var(--accent,var(--cyan));transition:transform .15s ease, box-shadow .15s ease;
+  box-shadow:0 0 0 1px var(--ring,rgba(0,240,255,.14)),0 12px 30px -24px var(--glow,rgba(0,240,255,.35));
 }
-.card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.5),0 0 18px var(--glow,rgba(0,240,255,.12))}
-.card h3{color:#fff;font-size:17px;margin-bottom:8px}
+.card:hover{transform:translateY(-3px);box-shadow:0 0 0 1px var(--ring,rgba(0,240,255,.2)),0 18px 40px -24px var(--glow,rgba(0,240,255,.5))}
+.card h3{color:#fff;font-size:17px;margin-bottom:8px;display:flex;align-items:center;gap:9px}
+.card h3::before{content:"";flex:none;width:11px;height:11px;border-radius:50%;background:var(--accent,var(--cyan));box-shadow:0 0 12px var(--accent,var(--cyan))}
 .card p{font-size:14.5px;color:var(--text)}
 .card .tagrow{margin-top:12px}
 .tag{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em;border-radius:999px;padding:2px 10px;margin:2px 4px 0 0;border:1px solid var(--border);color:var(--muted)}
-.tag.c{color:var(--cyan);border-color:rgba(0,240,255,.4)}
-.tag.m{color:var(--magenta);border-color:rgba(255,57,230,.4)}
-.tag.g{color:var(--green);border-color:rgba(0,255,163,.4)}
-.tag.o{color:var(--coral);border-color:rgba(255,122,69,.4)}
-.tag.y{color:var(--yellow);border-color:rgba(255,210,61,.4)}
+.tag.c{color:var(--cyan);border-color:rgba(0,240,255,.35);background:rgba(0,240,255,.12)}
+.tag.m{color:var(--magenta);border-color:rgba(255,57,230,.35);background:rgba(255,57,230,.12)}
+.tag.g{color:var(--green);border-color:rgba(0,255,163,.35);background:rgba(0,255,163,.12)}
+.tag.o{color:var(--coral);border-color:rgba(255,122,69,.35);background:rgba(255,122,69,.12)}
+.tag.y{color:var(--yellow);border-color:rgba(255,210,61,.35);background:rgba(255,210,61,.12)}
 ol.steps{list-style:none;counter-reset:st;max-width:760px}
 ol.steps li{counter-increment:st;position:relative;padding:16px 18px 16px 64px;background:var(--panel);border:1px solid var(--border);border-radius:12px;margin-bottom:12px}
 ol.steps li::before{
@@ -79,8 +82,8 @@ ol.steps b{color:#fff}
 .copybox button:hover{color:var(--cyan);border-color:var(--cyan)}
 .compare{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .col{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px}
-.col.bad{border-top:2px solid var(--coral);box-shadow:0 0 22px rgba(255,122,69,.08)}
-.col.good{border-top:2px solid var(--green);box-shadow:0 0 22px rgba(0,255,163,.08)}
+.col.bad{border-top:2px solid var(--coral);box-shadow:0 0 0 1px rgba(255,122,69,.18),0 18px 40px -28px rgba(255,122,69,.5)}
+.col.good{border-top:2px solid var(--green);box-shadow:0 0 0 1px rgba(0,255,163,.18),0 18px 40px -28px rgba(0,255,163,.5)}
 .col h3{font-size:16px;margin-bottom:12px}
 .col.bad h3{color:var(--coral)}
 .col.good h3{color:var(--green)}
@@ -101,9 +104,16 @@ ul.tight li::before{content:"▸";position:absolute;left:2px;color:var(--accent2
 .callout.warn{border-color:rgba(255,210,61,.55);background:rgba(255,210,61,.04)}
 .callout b{color:#fff}
 .principle{
-  margin-top:84px;border-radius:16px;padding:34px 30px;text-align:center;
-  background:linear-gradient(100deg,rgba(0,240,255,.10),rgba(255,57,230,.10) 50%,rgba(255,122,69,.10));
-  border:1px solid var(--border);
+  margin-top:84px;border-radius:16px;padding:34px 30px;text-align:center;position:relative;
+  background:linear-gradient(100deg,rgba(0,240,255,.10),rgba(77,159,255,.10));
+  border:1px solid rgba(0,240,255,.28);
+}
+.principle::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;
+  background:linear-gradient(92deg,#00f0ff,#4d9fff);opacity:.5;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite:exclude;
 }
 .principle p{font-size:clamp(18px,2.8vw,24px);color:#fff;font-weight:700;max-width:760px;margin:0 auto}
 .principle .mono{display:block;margin-top:12px;font-size:13px;color:var(--cyan);font-weight:400}
@@ -136,17 +146,17 @@ footer a{color:var(--cyan);text-decoration:none}
     <div class="sec-head"><span class="sec-num mono">01</span><h2>The problem nobody warns you about</h2></div>
     <p class="sec-sub">Close a Claude Code session and three things happen to your work.</p>
     <div class="grid">
-      <div class="card" style="--accent:var(--coral);--glow:rgba(255,122,69,.15)">
+      <div class="card" style="--accent:var(--coral);--ring:rgba(255,122,69,.16);--glow:rgba(255,122,69,.4)">
         <h3>Fresh sessions start at zero</h3>
         <p>New window, blank memory. The project you spent all day explaining? Gone. You get to explain it again.</p>
         <div class="tagrow"><span class="tag o">every session</span></div>
       </div>
-      <div class="card" style="--accent:var(--magenta);--glow:rgba(255,57,230,.15)">
+      <div class="card" style="--accent:var(--magenta);--ring:rgba(255,57,230,.16);--glow:rgba(255,57,230,.4)">
         <h3>Summaries can drop the dead ends</h3>
         <p>Compaction and auto-summaries keep your decisions but can quietly lose the approaches that didn't work. Then the next session happily re-runs them.</p>
         <div class="tagrow"><span class="tag m">the hidden cost</span></div>
       </div>
-      <div class="card" style="--accent:var(--yellow);--glow:rgba(255,210,61,.15)">
+      <div class="card" style="--accent:var(--yellow);--ring:rgba(255,210,61,.16);--glow:rgba(255,210,61,.4)">
         <h3>Re-explaining burns real time</h3>
         <p>20 minutes of "so here's the project, here's where we were" at the start of every session adds up fast. And it buries the new session in pasted history.</p>
         <div class="tagrow"><span class="tag y">your time</span></div>
@@ -208,32 +218,32 @@ Nothing pending. Waiting on you for what's next.</pre>
     <div class="sec-head"><span class="sec-num mono">04</span><h2>What's in the kit</h2></div>
     <p class="sec-sub">Self-contained. No dependencies, no build step, nothing phones home.</p>
     <div class="grid">
-      <div class="card" style="--accent:var(--cyan);--glow:rgba(0,240,255,.15)">
+      <div class="card" style="--accent:var(--cyan);--ring:rgba(0,240,255,.16);--glow:rgba(0,240,255,.4)">
         <h3>The /handoff skill</h3>
         <p>Drop one folder into Claude Code and end any session with /handoff. Includes the git state-header script.</p>
         <div class="tagrow"><span class="tag c">claude code</span><span class="tag g">30-sec install</span></div>
       </div>
-      <div class="card" style="--accent:var(--magenta);--glow:rgba(255,57,230,.15)">
+      <div class="card" style="--accent:var(--magenta);--ring:rgba(255,57,230,.16);--glow:rgba(255,57,230,.4)">
         <h3>The portable prompt</h3>
         <p>Zero install. Paste it at the end of any session. Works in Claude Code out of the box, and in Cursor, Codex, and friends (any agent that can write files in your home folder).</p>
         <div class="tagrow"><span class="tag m">any harness</span><span class="tag g">no setup</span></div>
       </div>
-      <div class="card" style="--accent:var(--green);--glow:rgba(0,255,163,.15)">
+      <div class="card" style="--accent:var(--green);--ring:rgba(0,255,163,.16);--glow:rgba(0,255,163,.4)">
         <h3>START-HERE guide</h3>
         <p>Open it in your browser: install, first handoff, resume, uninstall. Copy buttons on everything you'd type.</p>
         <div class="tagrow"><span class="tag g">humans</span></div>
       </div>
-      <div class="card" style="--accent:var(--blue);--glow:rgba(77,159,255,.15)">
+      <div class="card" style="--accent:var(--blue);--ring:rgba(77,159,255,.16);--glow:rgba(77,159,255,.4)">
         <h3>A real example handoff</h3>
         <p>Generated by the skill on a demo repo, not written by hand. See exactly what you'll get before you install anything.</p>
         <div class="tagrow"><span class="tag c">real output</span></div>
       </div>
-      <div class="card" style="--accent:var(--coral);--glow:rgba(255,122,69,.15)">
+      <div class="card" style="--accent:var(--coral);--ring:rgba(255,122,69,.16);--glow:rgba(255,122,69,.4)">
         <h3>The policy one-pager</h3>
         <p>The rules that make it work: when to hand off, why you never trim the failed approaches, and why the resume verifies first.</p>
         <div class="tagrow"><span class="tag o">the procedure</span></div>
       </div>
-      <div class="card" style="--accent:var(--yellow);--glow:rgba(255,210,61,.15)">
+      <div class="card" style="--accent:var(--yellow);--ring:rgba(255,210,61,.16);--glow:rgba(255,210,61,.4)">
         <h3>Compatibility &amp; honest limits</h3>
         <p>What's supported, what's not, and what a handoff can't save (unsaved buffers, killed processes). No overselling.</p>
         <div class="tagrow"><span class="tag y">tested</span></div>

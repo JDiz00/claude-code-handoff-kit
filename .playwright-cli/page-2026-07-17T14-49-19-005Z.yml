@@ -1,0 +1,72 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]: Launchpad · Handoff Kit v1.0.0
+    - heading "Publish the Handoff Kit" [level=1] [ref=e5]
+    - paragraph [ref=e6]: Everything is built, tested, and reviewed. Four steps, mostly clicks and pastes. Nothing goes public until you do step 1 and step 3 yourself.
+  - generic [ref=e7]:
+    - generic [ref=e8]:
+      - generic [ref=e9]: "01"
+      - heading "Create the Gumroad product" [level=2] [ref=e10]
+    - paragraph [ref=e11]: Free product, email capture on. The permalink MUST be handoff-kit, every baked link in the kit points at it.
+    - 'link "Open Gumroad: New Product" [ref=e12] [cursor=pointer]':
+      - /url: https://gumroad.com/products/new
+    - paragraph [ref=e13]: "Name:"
+    - generic [ref=e14]:
+      - generic [ref=e15]: Claude Code Handoff Kit (free)
+      - button "COPY" [ref=e16] [cursor=pointer]
+    - paragraph [ref=e17]: "Type: Digital product · Price: $0+ (lets people tip, still free) · In the product URL box, set the permalink:"
+    - generic [ref=e18]:
+      - generic [ref=e19]: handoff-kit
+      - button "COPY" [ref=e20] [cursor=pointer]
+    - paragraph [ref=e21]: "Upload this file as the content:"
+    - generic [ref=e22]:
+      - generic [ref=e23]: /home/jdiz00/projects/handoff-kit/claude-code-handoff-kit-v1.0.0.zip
+      - button "COPY" [ref=e24] [cursor=pointer]
+    - paragraph [ref=e25]: "Paste this as the description:"
+    - generic [ref=e26]:
+      - generic [ref=e27]: "I lost 20 minutes at the start of every Claude Code session re-explaining my own project. New window, blank memory, \"so here's what we were doing.\" Every single day. Now it's four words: \"read the file and continue.\" This kit is the system I use to close a session and pick it up later without re-explaining it. It writes a lean checkpoint (target: ~30 lines) when you're done working: the goal, the exact stop point, what got verified, the next step, and the approaches that DIDN'T work (summaries can silently drop those, and then your next session re-runs dead ends you already paid for). The part nobody else ships: the resume is verified. The next session checks your repo's live branch, commit, and dirty files against the checkpoint before it touches anything. In our testing, a fresh session caught a repo that had moved past its handoff and stopped to say so instead of editing files based on stale info. What you get: - The /handoff skill for Claude Code (30-second install, one folder) - A zero-install paste prompt that also works in Cursor and Codex (any agent that can write files in your home folder) - A START-HERE guide with copy buttons on every command - A real example handoff generated during testing, not written by hand - The one-page policy that makes the whole thing work - Honest compatibility notes, including what a handoff can't save You don't need this if you only ever work in single sittings and never close the window mid-project. Everyone else, it's free, so grab it and try the loop once."
+      - button "COPY" [ref=e28] [cursor=pointer]
+    - generic [ref=e29]: "Before you hit publish: the LICENSE in the kit says \"Copyright (c) 2026 Expressive446\" (your public handle, so no personal name leaks). If you'd rather have your real name on it, tell me and I'll rebuild the zip."
+  - generic [ref=e30]:
+    - generic [ref=e31]:
+      - generic [ref=e32]: "02"
+      - heading "Verify the actual buyer download" [level=2] [ref=e33]
+    - paragraph [ref=e34]: "The gate that catches what listings can't: download your own product like a customer."
+    - list [ref=e35]:
+      - listitem [ref=e36]: ▸ After publishing, open your product page and click "I want this" with a test email.
+      - listitem [ref=e37]: ▸ Download the zip from the receipt, unzip it, and double-click START-HERE.html.
+      - listitem [ref=e38]: ▸ If it opens dark-neon with working copy buttons, you're good. Tell me if anything is off.
+  - generic [ref=e39]:
+    - generic [ref=e40]:
+      - generic [ref=e41]: "03"
+      - heading "Push the public repo (optional but recommended)" [level=2] [ref=e42]
+    - paragraph [ref=e43]: The repo is committed and sanitized locally. This one command creates the public GitHub repo and pushes. Running it is your go-ahead, so only run it when you're ready to be public.
+    - generic [ref=e44]:
+      - generic [ref=e45]: cd ~/projects/handoff-kit && gh repo create claude-code-handoff-kit --public --source=. --push
+      - button "COPY" [ref=e46] [cursor=pointer]
+    - paragraph [ref=e47]: The showcase page is at site/index.html in the repo. If you want it live as the repo's web page (GitHub Pages), say the word and I'll wire it next session.
+  - generic [ref=e48]:
+    - generic [ref=e49]:
+      - generic [ref=e50]: "04"
+      - heading "Set up the 3 emails (Gumroad → Emails)" [level=2] [ref=e51]
+    - paragraph [ref=e52]: One right after download, one a few days later, one a week later. Email 3 needs your Loop & Goal link where it says [LINK + UTM].
+    - 'link "Open Gumroad: Emails" [ref=e53] [cursor=pointer]':
+      - /url: https://gumroad.com/emails
+    - paragraph [ref=e54]: "Email 1 · subject: Your first handoff, 5 minutes"
+    - generic [ref=e55]:
+      - generic [ref=e56]: "You grabbed the Handoff Kit. Here's the fastest way to feel what it does. Don't install anything yet. Open PROMPT.md, copy the block, and paste it at the end of whatever Claude Code session you have open today. It'll write a lean checkpoint (target: ~30 lines) and print a one-line resume command. Tomorrow, open a fresh session and paste that line. Watch it check your repo state, restate the plan in 3 lines, and keep going. That's the whole product. If that loop saves you time, the /handoff skill install is in START-HERE.html. One folder copy, 30 seconds. Just let me know if anything doesn't work on your setup. I read replies."
+      - button "COPY" [ref=e57] [cursor=pointer]
+    - paragraph [ref=e58]: "Email 2 · subject: Why I don't trust \"resume\" by itself"
+    - generic [ref=e59]:
+      - generic [ref=e60]: "Claude Code has /resume built in. It reloads your conversation. So why the kit? Because reloading a conversation isn't the same as knowing your repo state. If you (or a teammate, or you in another window) changed the code since that conversation, a resumed session works from stale info and doesn't know it. The kit's handoff carries a state header: branch, commit, dirty-file counts, pulled straight from git when you close out. The fresh session compares that against live git BEFORE touching files. When we tested it, we deliberately committed past the handoff, resumed, and the session's first words were \"Mismatch found,\" with the exact commit it found instead. Then it stopped and asked. That's the difference between notes and a checkpoint that gets checked before it's trusted. Try it: make a handoff, commit something small, then resume and watch it catch the drift."
+      - button "COPY" [ref=e61] [cursor=pointer]
+    - paragraph [ref=e62]: "Email 3 · subject: The handoff protects one boundary. Here's the other one."
+    - generic [ref=e63]:
+      - generic [ref=e64]: "The Handoff Kit protects one session boundary. Loop & Goal keeps longer work moving until the proof is printed. If your projects are bigger than one session, the failure mode moves: it's not \"the next session forgot,\" it's \"the work stalled between sessions and nobody noticed.\" Loop & Goal is the system I use for that: a goal file that states what done looks like, and a loop that keeps sessions pointed at it until it's verified. [LINK + UTM] If the handoff loop is already saving you time, this is the same idea stretched across a whole project. And if one session at a time is all you need, the free kit is the whole system, you're done, ignore this."
+      - button "COPY" [ref=e65] [cursor=pointer]
+  - generic [ref=e66]:
+    - generic [ref=e67]:
+      - generic [ref=e68]: "05"
+      - 'heading "Then: the video" [level=2] [ref=e69]'
+    - paragraph [ref=e70]: The showcase page (~/projects/handoff-kit/site/index.html) is built for screenshots and b-roll, and the demo repo (~/projects/handoff-kit/demo-repo/) is preloaded for a clean take, including the mismatch-catch moment. When the Gumroad link is live, we look at the page together and pick the video approach.
+  - paragraph [ref=e72]: "Waiting on you: publish on Gumroad (step 1), then say the word on the repo push and the video."

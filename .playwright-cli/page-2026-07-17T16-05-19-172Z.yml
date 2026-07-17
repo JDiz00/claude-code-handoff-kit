@@ -1,0 +1,77 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]: Start Here · 5 Minutes
+    - heading "Set up your first handoff" [level=1] [ref=e5]
+    - paragraph [ref=e6]: "Two ways to use this kit: paste the prompt (zero setup, works anywhere) or install the skill (30 seconds, then it's just /handoff forever). Both end the same way: tomorrow's session resumes without you re-explaining the project."
+  - generic [ref=e7]:
+    - generic [ref=e8]:
+      - generic [ref=e9]: "01"
+      - 'heading "Fastest path: the paste prompt" [level=2] [ref=e10]'
+    - paragraph [ref=e11]: No install. Try the whole loop once before committing to anything.
+    - paragraph [ref=e12]: Open PROMPT.md from this kit, copy the block inside it, and paste it at the end of any Claude Code session. It writes your handoff and prints a one-line resume command. Next session, paste that line. Done.
+    - paragraph [ref=e13]: If that loop saves you time, install the skill so it's one command instead of a paste.
+  - generic [ref=e14]:
+    - generic [ref=e15]:
+      - generic [ref=e16]: "02"
+      - heading "Install the skill (30 seconds)" [level=2] [ref=e17]
+    - paragraph [ref=e18]: One folder copy. Run this from the unzipped kit folder.
+    - paragraph [ref=e19]: "First, check for collisions. If you already have a /handoff command or skill, this install would shadow it:"
+    - generic [ref=e20]:
+      - generic [ref=e21]: ls ~/.claude/skills/ ~/.claude/commands/ 2>/dev/null | grep -i handoff
+      - button "COPY" [ref=e22] [cursor=pointer]
+    - paragraph [ref=e23]: "Nothing printed? You're clear. Install:"
+    - generic [ref=e24]:
+      - generic [ref=e25]: mkdir -p ~/.claude/skills && cp -r skill/handoff ~/.claude/skills/
+      - button "COPY" [ref=e26] [cursor=pointer]
+    - paragraph [ref=e27]: If that skills folder didn't exist before (this is your first skill), restart Claude Code once so it's picked up. Otherwise no restart needed. No config edits, nothing else touched.
+    - generic [ref=e28]: "Windows note: the commands on this page are for macOS, Linux, WSL, and Git Bash. On native Windows (PowerShell), install with the command below; the skill still works, it just gathers the git state itself instead of using the bundled script. Details in docs/COMPATIBILITY.md."
+    - generic [ref=e29]:
+      - generic [ref=e30]: New-Item -ItemType Directory -Force "$env:USERPROFILE\.claude\skills" ; Copy-Item -Recurse skill\handoff "$env:USERPROFILE\.claude\skills\handoff"
+      - button "COPY" [ref=e31] [cursor=pointer]
+  - generic [ref=e32]:
+    - generic [ref=e33]:
+      - generic [ref=e34]: "03"
+      - heading "End a session" [level=2] [ref=e35]
+    - paragraph [ref=e36]: "When you're wrapping up, or before a long session gets summarized:"
+    - generic [ref=e37]:
+      - generic [ref=e38]: /handoff
+      - button "COPY" [ref=e39] [cursor=pointer]
+    - paragraph [ref=e40]: "The skill will sweep for unresolved mistakes (it asks before fixing anything), write a lean checkpoint (target: ~30 lines) to ~/.claude/handoffs/, and print your resume line. If a handoff already exists for the project, it keeps one .bak of the old version."
+  - generic [ref=e41]:
+    - generic [ref=e42]:
+      - generic [ref=e43]: "04"
+      - heading "Resume next session" [level=2] [ref=e44]
+    - paragraph [ref=e45]: "Open a fresh session in the same project and paste the printed line, e.g.:"
+    - generic [ref=e46]:
+      - generic [ref=e47]: Read ~/.claude/handoffs/my-project.md and continue
+      - button "COPY" [ref=e48] [cursor=pointer]
+    - paragraph [ref=e49]: The fresh session checks your repo's live branch, commit, and dirty counts against the handoff's header before touching any files. If someone (including you, in another window) changed the repo since the handoff was written, it reports the mismatch and stops instead of working from stale info. Then it restates Goal / State / Next in 3 lines and starts the next step.
+    - generic [ref=e50]: Running two windows on the same repo at the same time? That's a job for git worktrees, not handoffs. The tripwire catches collisions, it can't prevent them.
+  - generic [ref=e51]:
+    - generic [ref=e52]:
+      - generic [ref=e53]: "05"
+      - heading "Good habits (the short version)" [level=2] [ref=e54]
+    - list [ref=e55]:
+      - listitem [ref=e56]: ▸ Hand off at the end of any session you'll continue later, even "in an hour".
+      - listitem [ref=e57]: ▸ Never let the ~30-line target trim the Tried/constraints section. Dead ends are the part of your session the repo can't give back.
+      - listitem [ref=e58]: ▸ Pointers, not pastes. The handoff records paths and line refs, never file contents.
+      - listitem [ref=e59]: ▸ No secrets, tokens, credentials, or customer data in a handoff. Ever.
+      - listitem [ref=e60]: ▸ Full rules in docs/POLICY.md, one page.
+  - generic [ref=e61]:
+    - generic [ref=e62]:
+      - generic [ref=e63]: "06"
+      - heading "Uninstall" [level=2] [ref=e64]
+    - paragraph [ref=e65]: "Clean removal, nothing else is affected:"
+    - generic [ref=e66]:
+      - generic [ref=e67]: rm -rf ~/.claude/skills/handoff
+      - button "COPY" [ref=e68] [cursor=pointer]
+    - paragraph [ref=e69]: "PowerShell:"
+    - generic [ref=e70]:
+      - generic [ref=e71]: Remove-Item -Recurse -Force "$env:USERPROFILE\.claude\skills\handoff"
+      - button "COPY" [ref=e72] [cursor=pointer]
+    - paragraph [ref=e73]: Your saved handoffs stay in ~/.claude/handoffs/ until you delete them yourself.
+  - paragraph [ref=e75]: End with /handoff. Resume with one line. Stop re-explaining your project.
+  - contentinfo [ref=e76]:
+    - text: Claude Code Handoff Kit · MIT licensed · updates via
+    - link "Gumroad" [ref=e77] [cursor=pointer]:
+      - /url: https://expressive446.gumroad.com/l/handoff-kit?utm_source=kit&utm_medium=starthere
